@@ -16,6 +16,7 @@ const mockWishlistItems = [
     averageRating: 4.5,
     totalReviewsCount: 89,
     specs: {},
+    status: "live" as const,
     createdAt: new Date(),
     updatedAt: new Date(),
   },

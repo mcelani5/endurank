@@ -26,6 +26,7 @@ const mockGearItem = {
     "Weight": "8.2 kg",
     "Wheel Size": "700c",
   },
+  status: "live" as const,
   createdAt: new Date(),
   updatedAt: new Date(),
 };

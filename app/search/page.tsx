@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
@@ -14,7 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2, ArrowUp, Check } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
-export default function SearchPage() {
+function SearchPageContent() {
   const { user } = useAuth();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -299,5 +299,27 @@ export default function SearchPage() {
         </div>
       </main>
     </>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <>
+        <Navbar />
+        <main className="min-h-screen bg-[#1a1a1a]">
+          <div className="container mx-auto px-4 py-6 max-w-5xl">
+            <div className="flex items-center justify-center py-20">
+              <div className="flex flex-col items-center gap-4">
+                <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
+                <p className="text-gray-400">Loading...</p>
+              </div>
+            </div>
+          </div>
+        </main>
+      </>
+    }>
+      <SearchPageContent />
+    </Suspense>
   );
 }

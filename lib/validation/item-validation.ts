@@ -179,20 +179,23 @@ export async function checkSimilarRace(
     const snapshot = await getDocs(racesRef);
 
     const items = snapshot.docs
-      .map((doc) => ({
-        ...doc.data(),
-        raceId: doc.id,
-        raceDate: doc.data().raceDate?.toDate() || new Date(),
-        createdAt: doc.data().createdAt?.toDate() || new Date(),
-        updatedAt: doc.data().updatedAt?.toDate() || new Date(),
-      }))
+      .map((doc) => {
+        const data = doc.data();
+        return {
+          ...data,
+          raceId: doc.id,
+          raceDate: data.raceDate?.toDate() || new Date(),
+          createdAt: data.createdAt?.toDate() || new Date(),
+          updatedAt: data.updatedAt?.toDate() || new Date(),
+        } as RaceItem;
+      })
       .filter((item) => {
         // Only check races in the same location
         return (
           item.location?.city?.toLowerCase() === city.toLowerCase() &&
           item.location?.state?.toLowerCase() === state.toLowerCase()
         );
-      }) as RaceItem[];
+      });
 
     const similarItems = findSimilarItems(raceName, items, 85);
 
