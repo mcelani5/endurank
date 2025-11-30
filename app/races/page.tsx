@@ -1,73 +1,64 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import { Navbar } from "@/components/layout/navbar";
 import { RaceCard } from "@/components/products/race-card";
 import { useAuth } from "@/lib/auth-context";
 import { getCostSensitivityFactor } from "@/lib/endurank";
-import { ChevronRight, Home } from "lucide-react";
-
-// Mock data for demonstration
-const mockRaces = [
-  {
-    raceId: "1",
-    raceName: "IRONMAN California",
-    raceDate: new Date("2025-05-10"),
-    location: { city: "Sacramento", state: "CA" },
-    distance: "full" as const,
-    msrp: 850,
-    avgCourseRating: 4.5,
-    avgCostRating: 3.8,
-    avgVolunteersRating: 4.9,
-    avgSpectatorRating: 4.7,
-    averageRating: 4.5,
-    totalReviewsCount: 67,
-    status: "live" as const,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    raceId: "2",
-    raceName: "Boulder Sunset Triathlon",
-    raceDate: new Date("2025-07-15"),
-    location: { city: "Boulder", state: "CO" },
-    distance: "olympic" as const,
-    msrp: 175,
-    avgCourseRating: 4.8,
-    avgCostRating: 4.2,
-    avgVolunteersRating: 4.6,
-    avgSpectatorRating: 4.4,
-    averageRating: 4.6,
-    totalReviewsCount: 142,
-    status: "live" as const,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    raceId: "3",
-    raceName: "Austin Sprint Tri",
-    raceDate: new Date("2025-06-20"),
-    location: { city: "Austin", state: "TX" },
-    distance: "sprint" as const,
-    msrp: 95,
-    avgCourseRating: 4.3,
-    avgCostRating: 4.5,
-    avgVolunteersRating: 4.7,
-    avgSpectatorRating: 4.2,
-    averageRating: 4.4,
-    totalReviewsCount: 89,
-    status: "live" as const,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
+import { ChevronRight, Home, Loader2 } from "lucide-react";
+import type { RaceItem, RaceDistance } from "@/lib/types";
 
 export default function RacesPage() {
   const { user } = useAuth();
-  const categoryMaxPrice = Math.max(...mockRaces.map(race => race.msrp));
+  const [races, setRaces] = useState<RaceItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState<"all" | RaceDistance>("all");
+
   const userCostSensitivity = user
     ? getCostSensitivityFactor(user.costSensitivity)
     : 0.5;
+
+  useEffect(() => {
+    async function fetchRaces() {
+      try {
+        setLoading(true);
+        const racesRef = collection(db, "races");
+        const racesQuery = query(
+          racesRef,
+          where("status", "==", "live"),
+          orderBy("raceDate", "asc")
+        );
+
+        const snapshot = await getDocs(racesQuery);
+        const racesData = snapshot.docs.map(doc => ({
+          ...doc.data(),
+          raceId: doc.id,
+          raceDate: doc.data().raceDate?.toDate() || new Date(),
+          createdAt: doc.data().createdAt?.toDate() || new Date(),
+          updatedAt: doc.data().updatedAt?.toDate() || new Date(),
+        })) as RaceItem[];
+
+        setRaces(racesData);
+      } catch (error) {
+        console.error("Error fetching races:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchRaces();
+  }, []);
+
+  const filteredRaces = filter === "all"
+    ? races
+    : races.filter(race => race.distance === filter);
+
+  const categoryMaxPrice = races.length > 0
+    ? Math.max(...races.map(race => race.msrp))
+    : 1000;
 
   return (
     <>
@@ -89,19 +80,91 @@ export default function RacesPage() {
             <p className="text-gray-400">
               Find your next race with personalized Endurank recommendations
             </p>
+            {!loading && (
+              <p className="text-gray-500 text-sm mt-2">
+                {filteredRaces.length} {filteredRaces.length === 1 ? 'race' : 'races'} found
+              </p>
+            )}
           </div>
 
-          {/* Product Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {mockRaces.map((race) => (
-              <RaceCard
-                key={race.raceId}
-                item={race}
-                userCostSensitivity={userCostSensitivity}
-                categoryMaxPrice={categoryMaxPrice}
-              />
-            ))}
+          {/* Filters */}
+          <div className="flex flex-wrap gap-3 mb-8">
+            <button
+              onClick={() => setFilter("all")}
+              className={`px-4 py-2.5 rounded-full text-sm transition-colors ${
+                filter === "all"
+                  ? "bg-blue-600 text-white"
+                  : "bg-[#2a2a2a] border border-[#3a3a3a] text-gray-300 hover:bg-[#3a3a3a]"
+              }`}
+            >
+              All Distances
+            </button>
+            <button
+              onClick={() => setFilter("sprint")}
+              className={`px-4 py-2.5 rounded-full text-sm transition-colors ${
+                filter === "sprint"
+                  ? "bg-blue-600 text-white"
+                  : "bg-[#2a2a2a] border border-[#3a3a3a] text-gray-300 hover:bg-[#3a3a3a]"
+              }`}
+            >
+              Sprint
+            </button>
+            <button
+              onClick={() => setFilter("olympic")}
+              className={`px-4 py-2.5 rounded-full text-sm transition-colors ${
+                filter === "olympic"
+                  ? "bg-blue-600 text-white"
+                  : "bg-[#2a2a2a] border border-[#3a3a3a] text-gray-300 hover:bg-[#3a3a3a]"
+              }`}
+            >
+              Olympic
+            </button>
+            <button
+              onClick={() => setFilter("half")}
+              className={`px-4 py-2.5 rounded-full text-sm transition-colors ${
+                filter === "half"
+                  ? "bg-blue-600 text-white"
+                  : "bg-[#2a2a2a] border border-[#3a3a3a] text-gray-300 hover:bg-[#3a3a3a]"
+              }`}
+            >
+              Half (70.3)
+            </button>
+            <button
+              onClick={() => setFilter("full")}
+              className={`px-4 py-2.5 rounded-full text-sm transition-colors ${
+                filter === "full"
+                  ? "bg-blue-600 text-white"
+                  : "bg-[#2a2a2a] border border-[#3a3a3a] text-gray-300 hover:bg-[#3a3a3a]"
+              }`}
+            >
+              Full (140.6)
+            </button>
           </div>
+
+          {/* Loading State */}
+          {loading ? (
+            <div className="flex items-center justify-center py-20">
+              <div className="flex flex-col items-center gap-4">
+                <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
+                <p className="text-gray-400">Loading races...</p>
+              </div>
+            </div>
+          ) : filteredRaces.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-400">No races found</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredRaces.map((race) => (
+                <RaceCard
+                  key={race.raceId}
+                  item={race}
+                  userCostSensitivity={userCostSensitivity}
+                  categoryMaxPrice={categoryMaxPrice}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </main>
     </>
