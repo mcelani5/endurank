@@ -75,12 +75,27 @@ function SearchPageContent() {
             createdAt: doc.data().createdAt?.toDate() || new Date(),
             updatedAt: doc.data().updatedAt?.toDate() || new Date(),
           } as RaceItem))
-          .filter(item =>
-            item.raceName.toLowerCase().includes(searchLower) ||
-            item.location.city.toLowerCase().includes(searchLower) ||
-            item.location.state.toLowerCase().includes(searchLower) ||
-            item.distance.toLowerCase().includes(searchLower)
-          );
+          .filter(item => {
+            const nameMatch = item.raceName.toLowerCase().includes(searchLower);
+            const cityMatch = item.location.city?.toLowerCase().includes(searchLower);
+            const stateMatch = item.location.state?.toLowerCase().includes(searchLower);
+            const regionMatch = item.location.region?.toLowerCase().includes(searchLower);
+            const distanceMatch = item.distance.toLowerCase().includes(searchLower);
+            const organizerMatch = item.organizerSeries?.toLowerCase().includes(searchLower);
+
+            return nameMatch || cityMatch || stateMatch || regionMatch || distanceMatch || organizerMatch;
+          })
+          .sort((a, b) => {
+            // Sort by relevance: exact name matches first, then by date
+            const aNameExact = a.raceName.toLowerCase() === searchLower;
+            const bNameExact = b.raceName.toLowerCase() === searchLower;
+
+            if (aNameExact && !bNameExact) return -1;
+            if (!aNameExact && bNameExact) return 1;
+
+            // Then by upcoming date
+            return a.raceDate.getTime() - b.raceDate.getTime();
+          });
 
         setRaceResults(raceMatches);
       } catch (err) {
@@ -113,21 +128,56 @@ function SearchPageContent() {
   // Generate a simple answer based on results
   const generateAnswer = () => {
     if (totalResults === 0) {
-      return `I couldn't find any specific results for "${searchQuery}" in our database. Try searching for specific brands, product names, or race locations.`;
+      return `I couldn't find any results for "${searchQuery}" in our database. Try searching for:\n\n• Race locations (e.g., "California", "Boulder", "New York")\n• Race distances ("sprint", "olympic", "half", "full")\n• Race series ("IRONMAN", "USA Triathlon")\n• Gear brands or product names`;
     }
 
     let answer = "";
-    if (gearResults.length > 0) {
-      answer += `I found ${gearResults.length} gear ${gearResults.length === 1 ? 'item' : 'items'} matching your search. `;
-      const topGear = gearResults[0];
-      answer += `The top result is the ${topGear.productName} by ${topGear.brand}, priced at $${topGear.msrp.toLocaleString()} with an average rating of ${topGear.averageRating.toFixed(1)}/5.0 based on ${topGear.totalReviewsCount} reviews. `;
-    }
 
     if (raceResults.length > 0) {
-      if (gearResults.length > 0) answer += "\n\n";
-      answer += `I also found ${raceResults.length} race${raceResults.length === 1 ? '' : 's'}. `;
+      answer += `I found ${raceResults.length} race${raceResults.length === 1 ? '' : 's'} matching "${searchQuery}".\n\n`;
+
       const topRace = raceResults[0];
-      answer += `The top result is ${topRace.raceName} in ${topRace.location.city}, ${topRace.location.state}, a ${topRace.distance} distance race with registration at $${topRace.msrp.toLocaleString()}. It has an average rating of ${topRace.averageRating.toFixed(1)}/5.0 from ${topRace.totalReviewsCount} reviews.`;
+      const raceDate = new Date(topRace.raceDate);
+      const formattedDate = raceDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+      answer += `**Top Result:** ${topRace.raceName}\n`;
+      answer += `• Location: ${topRace.location.city}, ${topRace.location.state}\n`;
+      answer += `• Date: ${formattedDate}\n`;
+      answer += `• Distance: ${topRace.distance.charAt(0).toUpperCase() + topRace.distance.slice(1)}\n`;
+      answer += `• Registration: $${topRace.msrp.toLocaleString()}\n`;
+
+      if (topRace.organizerSeries) {
+        answer += `• Organizer: ${topRace.organizerSeries}\n`;
+      }
+
+      if (topRace.course?.swimDistance && topRace.course?.bikeDistance && topRace.course?.runDistance) {
+        answer += `• Course: ${(topRace.course.swimDistance / 1000).toFixed(1)}km swim, ${(topRace.course.bikeDistance / 1000).toFixed(1)}km bike, ${(topRace.course.runDistance / 1000).toFixed(1)}km run\n`;
+      }
+
+      if (topRace.isQualifier) {
+        answer += `• Qualifier for ${topRace.qualifierFor}\n`;
+      }
+
+      // Group results by distance
+      const byDistance = {
+        sprint: raceResults.filter(r => r.distance === 'sprint').length,
+        olympic: raceResults.filter(r => r.distance === 'olympic').length,
+        half: raceResults.filter(r => r.distance === 'half').length,
+        full: raceResults.filter(r => r.distance === 'full').length,
+      };
+
+      answer += `\n**Results by Distance:**\n`;
+      if (byDistance.sprint > 0) answer += `• Sprint: ${byDistance.sprint}\n`;
+      if (byDistance.olympic > 0) answer += `• Olympic: ${byDistance.olympic}\n`;
+      if (byDistance.half > 0) answer += `• Half (70.3): ${byDistance.half}\n`;
+      if (byDistance.full > 0) answer += `• Full (140.6): ${byDistance.full}\n`;
+    }
+
+    if (gearResults.length > 0) {
+      if (raceResults.length > 0) answer += "\n\n";
+      answer += `I found ${gearResults.length} gear ${gearResults.length === 1 ? 'item' : 'items'} matching your search. `;
+      const topGear = gearResults[0];
+      answer += `The top result is the ${topGear.productName} by ${topGear.brand}, priced at $${topGear.msrp.toLocaleString()}.`;
     }
 
     return answer;
