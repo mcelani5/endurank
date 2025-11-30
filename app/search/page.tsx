@@ -11,8 +11,9 @@ import { useAuth } from "@/lib/auth-context";
 import { getCostSensitivityFactor } from "@/lib/endurank";
 import type { GearItem, RaceItem } from "@/lib/types";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2, ArrowUp, Check } from "lucide-react";
+import { Loader2, ArrowUp, Check, Sparkles } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { parseQuery, generateSearchSummary } from "@/lib/search/query-parser";
 
 function SearchPageContent() {
   const { user } = useAuth();
@@ -41,6 +42,10 @@ function SearchPageContent() {
       setError(null);
 
       try {
+        // Parse the natural language query
+        const parsed = parseQuery(searchQuery);
+        console.log('Parsed query:', parsed);
+
         // Search gear items (only live items)
         const gearRef = collection(db, "gear");
         const gearQuery = query(gearRef, where("status", "==", "live"));
@@ -62,12 +67,12 @@ function SearchPageContent() {
 
         setGearResults(gearMatches);
 
-        // Search race items (only live items)
+        // Search race items with semantic understanding
         const racesRef = collection(db, "races");
         const racesQuery = query(racesRef, where("status", "==", "live"));
         const racesSnapshot = await getDocs(racesQuery);
 
-        const raceMatches = racesSnapshot.docs
+        let raceMatches = racesSnapshot.docs
           .map(doc => ({
             ...doc.data(),
             raceId: doc.id,
@@ -76,22 +81,80 @@ function SearchPageContent() {
             updatedAt: doc.data().updatedAt?.toDate() || new Date(),
           } as RaceItem))
           .filter(item => {
-            const nameMatch = item.raceName.toLowerCase().includes(searchLower);
-            const cityMatch = item.location.city?.toLowerCase().includes(searchLower);
-            const stateMatch = item.location.state?.toLowerCase().includes(searchLower);
-            const regionMatch = item.location.region?.toLowerCase().includes(searchLower);
-            const distanceMatch = item.distance.toLowerCase().includes(searchLower);
-            const organizerMatch = item.organizerSeries?.toLowerCase().includes(searchLower);
+            // Check distance filters
+            if (parsed.distances.length > 0 && !parsed.distances.includes(item.distance)) {
+              return false;
+            }
 
-            return nameMatch || cityMatch || stateMatch || regionMatch || distanceMatch || organizerMatch;
+            // Check location filters
+            if (parsed.locations.states.length > 0) {
+              if (!parsed.locations.states.includes(item.location.state)) {
+                return false;
+              }
+            }
+
+            if (parsed.locations.cities.length > 0) {
+              const cityMatch = parsed.locations.cities.some(city =>
+                item.location.city.toLowerCase().includes(city)
+              );
+              if (!cityMatch) return false;
+            }
+
+            // Check organizer filters
+            if (parsed.organizers.length > 0) {
+              const organizerMatch = parsed.organizers.some(org =>
+                item.organizerSeries?.toLowerCase().includes(org)
+              );
+              if (!organizerMatch) return false;
+            }
+
+            // Check price filters
+            if (parsed.filters.priceRange) {
+              if (parsed.filters.priceRange.min && item.msrp < parsed.filters.priceRange.min) {
+                return false;
+              }
+              if (parsed.filters.priceRange.max && item.msrp > parsed.filters.priceRange.max) {
+                return false;
+              }
+            }
+
+            // Check qualifier filter
+            if (parsed.filters.isQualifier && !item.isQualifier) {
+              return false;
+            }
+
+            // Check date filters
+            if (parsed.filters.dateRange) {
+              const raceDate = item.raceDate;
+              if (parsed.filters.dateRange.start && raceDate < parsed.filters.dateRange.start) {
+                return false;
+              }
+              if (parsed.filters.dateRange.end && raceDate > parsed.filters.dateRange.end) {
+                return false;
+              }
+            }
+
+            // Fallback: text matching if no specific filters matched but query has keywords
+            if (parsed.distances.length === 0 && parsed.locations.states.length === 0 &&
+                parsed.locations.cities.length === 0 && parsed.organizers.length === 0) {
+              const nameMatch = item.raceName.toLowerCase().includes(searchLower);
+              const cityMatch = item.location.city?.toLowerCase().includes(searchLower);
+              const stateMatch = item.location.state?.toLowerCase().includes(searchLower);
+              const regionMatch = item.location.region?.toLowerCase().includes(searchLower);
+              const distanceMatch = item.distance.toLowerCase().includes(searchLower);
+              const organizerMatch = item.organizerSeries?.toLowerCase().includes(searchLower);
+
+              return nameMatch || cityMatch || stateMatch || regionMatch || distanceMatch || organizerMatch;
+            }
+
+            return true;
           })
           .sort((a, b) => {
-            // Sort by relevance: exact name matches first, then by date
-            const aNameExact = a.raceName.toLowerCase() === searchLower;
-            const bNameExact = b.raceName.toLowerCase() === searchLower;
+            // Sort by relevance
+            const aScore = calculateRelevanceScore(a, parsed, searchLower);
+            const bScore = calculateRelevanceScore(b, parsed, searchLower);
 
-            if (aNameExact && !bNameExact) return -1;
-            if (!aNameExact && bNameExact) return 1;
+            if (aScore !== bScore) return bScore - aScore;
 
             // Then by upcoming date
             return a.raceDate.getTime() - b.raceDate.getTime();
@@ -108,6 +171,40 @@ function SearchPageContent() {
 
     performSearch();
   }, [searchQuery]);
+
+  // Calculate relevance score for sorting
+  function calculateRelevanceScore(race: RaceItem, parsed: any, searchLower: string): number {
+    let score = 0;
+
+    // Exact name match
+    if (race.raceName.toLowerCase() === searchLower) score += 100;
+    else if (race.raceName.toLowerCase().includes(searchLower)) score += 50;
+
+    // Distance match
+    if (parsed.distances.includes(race.distance)) score += 30;
+
+    // State match
+    if (parsed.locations.states.includes(race.location.state)) score += 20;
+
+    // City match
+    if (parsed.locations.cities.some((city: string) => race.location.city.toLowerCase().includes(city))) {
+      score += 40;
+    }
+
+    // Organizer match
+    if (parsed.organizers.some((org: string) => race.organizerSeries?.toLowerCase().includes(org))) {
+      score += 25;
+    }
+
+    // Qualifier boost if requested
+    if (parsed.filters.isQualifier && race.isQualifier) score += 15;
+
+    // Boost upcoming races slightly
+    const now = new Date();
+    if (race.raceDate > now) score += 5;
+
+    return score;
+  }
 
   const handleFollowUp = (e: React.FormEvent) => {
     e.preventDefault();
@@ -194,9 +291,15 @@ function SearchPageContent() {
               {searchQuery}
             </h1>
             {!loading && !error && totalResults > 0 && (
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <Check className="h-4 w-4 text-green-500" />
-                <span>Search completed</span>
+              <div className="flex items-center gap-3 text-sm">
+                <div className="flex items-center gap-2 text-green-500">
+                  <Check className="h-4 w-4" />
+                  <span>Search completed</span>
+                </div>
+                <div className="flex items-center gap-2 text-blue-400">
+                  <Sparkles className="h-4 w-4" />
+                  <span>{generateSearchSummary(parseQuery(searchQuery))}</span>
+                </div>
               </div>
             )}
           </div>
