@@ -1,0 +1,602 @@
+[
+  {
+    "raceId": "alcatraz-aquathlon-ca-sprint",
+    "raceName": "Alcatraz Aquathlon",
+    "location": {
+      "state": "CA",
+      "region": "West Coast",
+      "city": "San Francisco",
+      "country": "USA"
+    },
+    "distance": "sprint",
+    "prompt": "Professional triathlon race photography, sprint distance triathlon, San Francisco, CA, mixed terrain, ocean swim, fast-paced sprint race, energetic athletes, beginner-friendly atmosphere, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "austin-olympic-triathlon-tx-olympic",
+    "raceName": "Austin Olympic Triathlon",
+    "location": {
+      "state": "TX",
+      "country": "USA",
+      "city": "Austin",
+      "region": "Texas"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Austin, TX, road terrain, lake swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "boston-triathlon-ma-olympic",
+    "raceName": "Boston Triathlon",
+    "location": {
+      "region": "Northeast",
+      "state": "MA",
+      "country": "USA",
+      "city": "Boston"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Boston, MA, road terrain, ocean swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "boulder-peak-triathlon-co-olympic",
+    "raceName": "Boulder Peak Triathlon",
+    "location": {
+      "country": "USA",
+      "city": "Boulder",
+      "region": "Southwest",
+      "state": "CO"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Rocky Mountain backdrop, Boulder Reservoir, high altitude training, road terrain, reservoir swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "buffalo-springs-lake-70-3-tx-half",
+    "raceName": "Buffalo Springs Lake 70.3",
+    "location": {
+      "state": "TX",
+      "city": "Lubbock",
+      "region": "Texas",
+      "country": "USA"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Lubbock, TX, road terrain, lake swim, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "columbia-triathlon-md-olympic",
+    "raceName": "Columbia Triathlon",
+    "location": {
+      "state": "MD",
+      "city": "Columbia",
+      "region": "Northeast",
+      "country": "USA"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Columbia, MD, road terrain, lake swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "dallas-sprint-triathlon-tx-sprint",
+    "raceName": "Dallas Sprint Triathlon",
+    "location": {
+      "state": "TX",
+      "country": "USA",
+      "city": "Dallas",
+      "region": "Texas"
+    },
+    "distance": "sprint",
+    "prompt": "Professional triathlon race photography, sprint distance triathlon, Dallas, TX, road terrain, lake swim, fast-paced sprint race, energetic athletes, beginner-friendly atmosphere, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "denver-sprint-triathlon-co-sprint",
+    "raceName": "Denver Sprint Triathlon",
+    "location": {
+      "city": "Denver",
+      "country": "USA",
+      "region": "Southwest",
+      "state": "CO"
+    },
+    "distance": "sprint",
+    "prompt": "Professional triathlon race photography, sprint distance triathlon, Denver, CO, road terrain, reservoir swim, fast-paced sprint race, energetic athletes, beginner-friendly atmosphere, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "escape-from-alcatraz-triathlon-ca-olympic",
+    "raceName": "Escape from Alcatraz Triathlon",
+    "location": {
+      "country": "USA",
+      "region": "West Coast",
+      "city": "San Francisco",
+      "state": "CA"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, San Francisco, CA, mixed terrain, ocean swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "gulf-coast-half-fl-half",
+    "raceName": "Gulf Coast Half",
+    "location": {
+      "country": "USA",
+      "state": "FL",
+      "city": "Panama City Beach",
+      "region": "Southeast"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Panama City Beach, FL, road terrain, ocean swim, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-boulder-co-half",
+    "raceName": "IRONMAN 70.3 Boulder",
+    "location": {
+      "state": "CO",
+      "country": "USA",
+      "city": "Boulder",
+      "region": "Southwest"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Rocky Mountain backdrop, Boulder Reservoir, high altitude training, road terrain, reservoir swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-california-ca-half",
+    "raceName": "IRONMAN 70.3 California",
+    "location": {
+      "state": "CA",
+      "country": "USA",
+      "city": "Sacramento",
+      "region": "West Coast"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Sacramento, CA, road terrain, lake swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-chattanooga-tn-half",
+    "raceName": "IRONMAN 70.3 Chattanooga",
+    "location": {
+      "region": "Southeast",
+      "country": "USA",
+      "city": "Chattanooga",
+      "state": "TN"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Tennessee River, Lookout Mountain backdrop, southern hospitality, road terrain, river swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-des-moines-ia-half",
+    "raceName": "IRONMAN 70.3 Des Moines",
+    "location": {
+      "state": "IA",
+      "city": "Des Moines",
+      "region": "Midwest",
+      "country": "USA"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Des Moines, IA, road terrain, lake swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-florida-fl-half",
+    "raceName": "IRONMAN 70.3 Florida",
+    "location": {
+      "city": "Haines City",
+      "region": "Southeast",
+      "state": "FL",
+      "country": "USA"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Haines City, FL, road terrain, lake swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-indian-wells-ca-half",
+    "raceName": "IRONMAN 70.3 Indian Wells",
+    "location": {
+      "region": "West Coast",
+      "state": "CA",
+      "country": "USA",
+      "city": "Indian Wells"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Indian Wells, CA, road terrain, lake swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-maine-me-half",
+    "raceName": "IRONMAN 70.3 Maine",
+    "location": {
+      "country": "USA",
+      "region": "Northeast",
+      "state": "ME",
+      "city": "Old Orchard Beach"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Old Orchard Beach, ME, road terrain, ocean swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-oceanside-ca-half",
+    "raceName": "IRONMAN 70.3 Oceanside",
+    "location": {
+      "region": "West Coast",
+      "country": "USA",
+      "city": "Oceanside",
+      "state": "CA"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Pacific Ocean coastline, California beaches, pier backdrop, road terrain, ocean swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-oregon-or-half",
+    "raceName": "IRONMAN 70.3 Oregon",
+    "location": {
+      "country": "USA",
+      "region": "West Coast",
+      "state": "OR",
+      "city": "Salem"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Salem, OR, road terrain, lake swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-santa-rosa-ca-half",
+    "raceName": "IRONMAN 70.3 Santa Rosa",
+    "location": {
+      "region": "West Coast",
+      "city": "Santa Rosa",
+      "country": "USA",
+      "state": "CA"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, wine country, rolling hills, Northern California scenery, road terrain, lake swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-steelhead-mi-half",
+    "raceName": "IRONMAN 70.3 Steelhead",
+    "location": {
+      "region": "Midwest",
+      "country": "USA",
+      "state": "MI",
+      "city": "Benton Harbor"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Benton Harbor, MI, road terrain, lake swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-70-3-texas-tx-half",
+    "raceName": "IRONMAN 70.3 Texas",
+    "location": {
+      "country": "USA",
+      "state": "TX",
+      "region": "Texas",
+      "city": "Galveston"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Galveston, TX, road terrain, ocean swim, IRONMAN branded event, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-arizona-az-full",
+    "raceName": "IRONMAN Arizona",
+    "location": {
+      "country": "USA",
+      "state": "AZ",
+      "city": "Tempe",
+      "region": "Southwest"
+    },
+    "distance": "full",
+    "prompt": "Professional triathlon race photography, full distance triathlon, Tempe Town Lake, desert landscape, Arizona sunshine, road terrain, lake swim, IRONMAN branded event, full IRONMAN distance, epic endurance challenge, iconic finish line, sunset finish, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-coeur-d-alene-id-full",
+    "raceName": "IRONMAN Coeur d'Alene",
+    "location": {
+      "country": "USA",
+      "city": "Coeur d'Alene",
+      "region": "Mountain West",
+      "state": "ID"
+    },
+    "distance": "full",
+    "prompt": "Professional triathlon race photography, full distance triathlon, pristine lake waters, mountain scenery, pacific northwest beauty, road terrain, lake swim, IRONMAN branded event, full IRONMAN distance, epic endurance challenge, iconic finish line, sunset finish, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-florida-fl-full",
+    "raceName": "IRONMAN Florida",
+    "location": {
+      "state": "FL",
+      "region": "Southeast",
+      "city": "Panama City Beach",
+      "country": "USA"
+    },
+    "distance": "full",
+    "prompt": "Professional triathlon race photography, full distance triathlon, Panama City Beach, FL, road terrain, ocean swim, IRONMAN branded event, full IRONMAN distance, epic endurance challenge, iconic finish line, sunset finish, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-lake-placid-ny-full",
+    "raceName": "IRONMAN Lake Placid",
+    "location": {
+      "country": "USA",
+      "city": "Lake Placid",
+      "region": "Northeast",
+      "state": "NY"
+    },
+    "distance": "full",
+    "prompt": "Professional triathlon race photography, full distance triathlon, scenic Adirondack mountains, mirror lake, autumn foliage, road terrain, lake swim, IRONMAN branded event, full IRONMAN distance, epic endurance challenge, iconic finish line, sunset finish, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-texas-tx-full",
+    "raceName": "IRONMAN Texas",
+    "location": {
+      "country": "USA",
+      "city": "The Woodlands",
+      "region": "Texas",
+      "state": "TX"
+    },
+    "distance": "full",
+    "prompt": "Professional triathlon race photography, full distance triathlon, The Woodlands, TX, road terrain, lake swim, IRONMAN branded event, full IRONMAN distance, epic endurance challenge, iconic finish line, sunset finish, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "ironman-wisconsin-wi-full",
+    "raceName": "IRONMAN Wisconsin",
+    "location": {
+      "country": "USA",
+      "state": "WI",
+      "region": "Midwest",
+      "city": "Madison"
+    },
+    "distance": "full",
+    "prompt": "Professional triathlon race photography, full distance triathlon, Madison, WI, road terrain, lake swim, IRONMAN branded event, full IRONMAN distance, epic endurance challenge, iconic finish line, sunset finish, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "lake-tahoe-triathlon-ca-olympic",
+    "raceName": "Lake Tahoe Triathlon",
+    "location": {
+      "city": "South Lake Tahoe",
+      "country": "USA",
+      "state": "CA",
+      "region": "West Coast"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, South Lake Tahoe, CA, road terrain, lake swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "life-time-atlanta-triathlon-ga-sprint",
+    "raceName": "Life Time Atlanta Triathlon",
+    "location": {
+      "state": "GA",
+      "city": "Atlanta",
+      "country": "USA",
+      "region": "Southeast"
+    },
+    "distance": "sprint",
+    "prompt": "Professional triathlon race photography, sprint distance triathlon, Atlanta, GA, road terrain, lake swim, fast-paced sprint race, energetic athletes, beginner-friendly atmosphere, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "life-time-chicago-triathlon-il-olympic",
+    "raceName": "Life Time Chicago Triathlon",
+    "location": {
+      "region": "Midwest",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "USA"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Chicago, IL, road terrain, lake swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "madison-sprint-olympic-triathlon-wi-olympic",
+    "raceName": "Madison Sprint & Olympic Triathlon",
+    "location": {
+      "region": "Midwest",
+      "city": "Madison",
+      "country": "USA",
+      "state": "WI"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Madison, WI, road terrain, lake swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "miami-half-ironman-fl-half",
+    "raceName": "Miami Half Ironman",
+    "location": {
+      "state": "FL",
+      "region": "Southeast",
+      "city": "Miami",
+      "country": "USA"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, Miami, FL, road terrain, ocean swim, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "minneapolis-triathlon-mn-sprint",
+    "raceName": "Minneapolis Triathlon",
+    "location": {
+      "country": "USA",
+      "region": "Midwest",
+      "city": "Minneapolis",
+      "state": "MN"
+    },
+    "distance": "sprint",
+    "prompt": "Professional triathlon race photography, sprint distance triathlon, Minneapolis, MN, road terrain, lake swim, fast-paced sprint race, energetic athletes, beginner-friendly atmosphere, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "nashville-triathlon-tn-sprint",
+    "raceName": "Nashville Triathlon",
+    "location": {
+      "region": "Southeast",
+      "state": "TN",
+      "city": "Nashville",
+      "country": "USA"
+    },
+    "distance": "sprint",
+    "prompt": "Professional triathlon race photography, sprint distance triathlon, Nashville, TN, road terrain, lake swim, fast-paced sprint race, energetic athletes, beginner-friendly atmosphere, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "nation-s-triathlon-dc-olympic",
+    "raceName": "Nation's Triathlon",
+    "location": {
+      "country": "USA",
+      "region": "Other",
+      "state": "DC",
+      "city": "Washington"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Washington, DC, road terrain, river swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "new-york-city-triathlon-ny-olympic",
+    "raceName": "New York City Triathlon",
+    "location": {
+      "state": "NY",
+      "city": "New York",
+      "region": "Northeast",
+      "country": "USA"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, New York, NY, road terrain, river swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "pacific-grove-triathlon-ca-olympic",
+    "raceName": "Pacific Grove Triathlon",
+    "location": {
+      "state": "CA",
+      "region": "West Coast",
+      "city": "Pacific Grove",
+      "country": "USA"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Pacific Grove, CA, road terrain, ocean swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "philadelphia-triathlon-pa-olympic",
+    "raceName": "Philadelphia Triathlon",
+    "location": {
+      "state": "PA",
+      "region": "Northeast",
+      "country": "USA",
+      "city": "Philadelphia"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Philadelphia, PA, road terrain, river swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "phoenix-triathlon-az-sprint",
+    "raceName": "Phoenix Triathlon",
+    "location": {
+      "region": "Southwest",
+      "city": "Phoenix",
+      "country": "USA",
+      "state": "AZ"
+    },
+    "distance": "sprint",
+    "prompt": "Professional triathlon race photography, sprint distance triathlon, Phoenix, AZ, road terrain, lake swim, fast-paced sprint race, energetic athletes, beginner-friendly atmosphere, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "portland-triathlon-or-sprint",
+    "raceName": "Portland Triathlon",
+    "location": {
+      "region": "West Coast",
+      "state": "OR",
+      "country": "USA",
+      "city": "Portland"
+    },
+    "distance": "sprint",
+    "prompt": "Professional triathlon race photography, sprint distance triathlon, Portland, OR, road terrain, lake swim, fast-paced sprint race, energetic athletes, beginner-friendly atmosphere, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "raleigh-triathlon-nc-olympic",
+    "raceName": "Raleigh Triathlon",
+    "location": {
+      "region": "Southeast",
+      "city": "Raleigh",
+      "state": "NC",
+      "country": "USA"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Raleigh, NC, road terrain, lake swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "san-diego-triathlon-challenge-ca-sprint",
+    "raceName": "San Diego Triathlon Challenge",
+    "location": {
+      "region": "West Coast",
+      "state": "CA",
+      "country": "USA",
+      "city": "San Diego"
+    },
+    "distance": "sprint",
+    "prompt": "Professional triathlon race photography, sprint distance triathlon, San Diego, CA, road terrain, ocean swim, fast-paced sprint race, energetic athletes, beginner-friendly atmosphere, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "san-jose-international-triathlon-ca-olympic",
+    "raceName": "San Jose International Triathlon",
+    "location": {
+      "state": "CA",
+      "country": "USA",
+      "city": "San Jose",
+      "region": "West Coast"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, San Jose, CA, road terrain, reservoir swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "seattle-seafair-triathlon-wa-sprint",
+    "raceName": "Seattle Seafair Triathlon",
+    "location": {
+      "region": "West Coast",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "USA"
+    },
+    "distance": "sprint",
+    "prompt": "Professional triathlon race photography, sprint distance triathlon, Seattle, WA, road terrain, lake swim, fast-paced sprint race, energetic athletes, beginner-friendly atmosphere, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "south-beach-triathlon-fl-sprint",
+    "raceName": "South Beach Triathlon",
+    "location": {
+      "city": "Miami",
+      "state": "FL",
+      "country": "USA",
+      "region": "Southeast"
+    },
+    "distance": "sprint",
+    "prompt": "Professional triathlon race photography, sprint distance triathlon, Miami, FL, road terrain, ocean swim, fast-paced sprint race, energetic athletes, beginner-friendly atmosphere, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "st-anthony-s-triathlon-fl-olympic",
+    "raceName": "St. Anthony's Triathlon",
+    "location": {
+      "city": "St. Petersburg",
+      "country": "USA",
+      "region": "Southeast",
+      "state": "FL"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, St. Petersburg, FL, road terrain, ocean swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "usa-triathlon-age-group-national-championships-wi-olympic",
+    "raceName": "USA Triathlon Age Group National Championships",
+    "location": {
+      "city": "Milwaukee",
+      "country": "USA",
+      "region": "Midwest",
+      "state": "WI"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Milwaukee, WI, road terrain, lake swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "vineman-70-3-ca-half",
+    "raceName": "Vineman 70.3",
+    "location": {
+      "region": "West Coast",
+      "city": "Santa Rosa",
+      "state": "CA",
+      "country": "USA"
+    },
+    "distance": "half",
+    "prompt": "Professional triathlon race photography, half distance triathlon, wine country, rolling hills, Northern California scenery, road terrain, river swim, IRONMAN 70.3, endurance athletes, challenging course, dramatic landscape, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  },
+  {
+    "raceId": "wildflower-triathlon-ca-olympic",
+    "raceName": "Wildflower Triathlon",
+    "location": {
+      "state": "CA",
+      "country": "USA",
+      "region": "West Coast",
+      "city": "Bradley"
+    },
+    "distance": "olympic",
+    "prompt": "Professional triathlon race photography, olympic distance triathlon, Bradley, CA, road terrain, lake swim, competitive olympic distance, determined athletes, professional racing, vibrant race atmosphere, spectators cheering, transition area, race banners, professional event photography, high quality, 8k resolution, dramatic lighting"
+  }
+]
